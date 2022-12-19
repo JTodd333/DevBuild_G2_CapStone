@@ -1,0 +1,38 @@
+
+<h2>Pets</h2>
+
+
+<div class="columns">
+<div class="column-1">
+    <button style="margin: 0 auto;" mat-raised-button (click)="showForm()" >Add New Pet</button> <br/>
+    </div>
+    </div>
+    
+    
+    <div class="column" *ngIf="addingNewPet" >
+        <mat-card>
+        <mat-card-content>
+            <mat-form-field>Name: <input matInput type="text"  [(ngModel)]="newPet.pet_name" > <br/></mat-form-field>
+        <mat-form-field>Species: <input matInput type="text" [(ngModel)]="newPet.species" > <br/></mat-form-field>
+        <mat-form-field>Breed: <input matInput type="text" [(ngModel)]="newPet.breed" > <br/></mat-form-field>
+        <mat-form-field>Date of Birth: <input matInput type="text" placeholder="MM-DD-YYYY" [(ngModel)]="newPet.dob"> <br/></mat-form-field>
+        <mat-form-field>Notes: <input matInput type="text" [(ngModel)]="newPet.pet_notes"> <br/></mat-form-field>
+        
+        </mat-card-content>
+        <mat-card-actions>
+        <button mat-raised-button style="background-color:#ade9f4;" (click)="addPet()" >Save</button>
+        <button mat-raised-button color="warn" (click)="cancel()" >Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+    </div>
+
+
+
+<div class="columns">
+<div class="column" *ngFor="let p of PetList" >
+    <app-pet-detail [thePet]="p" 
+    (update)="updatePet($event)"
+    (delete)="deletePet($event)"></app-pet-detail>
+    
+</div> 
+</div>

@@ -1,0 +1,48 @@
+<h2>Contacts</h2>
+
+<div classs="columns">
+    <div class="column-1">
+    <button style="margin: 0 auto;" mat-raised-button (click)="showForm()" >Add New Contact</button> <br/>
+</div>
+</div>
+<div class="columns">
+    
+
+    <div class="column" style="margin: 20px;" *ngIf="addingNewContact" >
+        <mat-card>
+    <mat-card-content>
+        <mat-form-field>
+            Name: <input matInput type="text" [(ngModel)]="newContact.contact_name" > <br/>
+        </mat-form-field>
+        
+        <mat-form-field>
+            Phone: <input matInput type="phone" placeholder="111-222-3333" [(ngModel)]="newContact.phone" > <br/>
+        </mat-form-field>
+        
+        <mat-form-field>
+            Email: <input matInput type="email" placeholder="email@email.com" [(ngModel)]="newContact.email" > <br/>
+
+        </mat-form-field>
+        <mat-form-field>
+            Address: <input matInput type="text" [(ngModel)]="newContact.address" > <br/>
+
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button style="background-color:#ade9f4;" (click)="addContact()" >Save</button>
+        <button mat-raised-button color="warn" (click)="cancel()" >Cancel</button>
+    </mat-card-actions>
+</mat-card>
+</div>
+
+</div>
+
+<div class="columns">
+<div class="column" *ngFor="let c of ContactsList" >
+   
+    
+    <app-contacts-detail [theContact]="c"
+    (update)="updateContact($event)"
+    (delete)="deleteContact($event)"></app-contacts-detail>
+</div>
+</div>

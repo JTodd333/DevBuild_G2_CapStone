@@ -1,0 +1,67 @@
+<!-- <div style="margin-top:100px;" class="center">
+    <mat-card><mat-card-header><h2 >Pet Vet</h2></mat-card-header></mat-card>
+</div> -->
+<!-- background-image: url('https://png.pngtree.com/background/20210711/original/pngtree-light-blue-pet-dog-poster-background-picture-image_1094535.jpg'); -->
+
+<header>  
+    <!-- Background image -->
+    <div class="relative overflow-hidden bg-no-repeat bg-cover" style="
+      background-position: 100%;
+      height: 150px;
+    ">
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed">
+        <div class="flex justify-center items-center h-full">
+            <h1 class="text-5xl font-bold mt-0 mb-5" style="font-family: 'Unbounded', sans-serif;" >Pet Vet</h1>
+        </div>
+      </div>
+    </div>
+    <!-- Background image -->
+  </header>
+
+<div class="columns">
+    <div class="column" *ngIf="isUserLogged === false">
+        <mat-form-field>
+        <input matInput type="text" placeholder="user name" [(ngModel)]="userIDFilled" required>
+        </mat-form-field>
+        <mat-form-field>
+        <input matInput type="password" placeholder="password" >
+        </mat-form-field>
+        <div class="center">
+            <button mat-raised-button (click)="setUserID()">Log In</button>
+        </div>
+    </div>
+    </div>
+
+
+<mat-card style="margin: 0 auto" class="header-card">
+<div *ngIf="isUserLogged">
+    <div class="center">
+        <mat-card-header>
+        <h4> Hello, {{userIDFilled}}!</h4>
+        </mat-card-header> <br />
+        <br />
+        <mat-card-actions>
+        <ng-container *ngIf="isUserLogged" >
+            <button mat-raised-button color="warn" (click)="userLogOut()" >Log Out</button>
+        </ng-container>
+    </mat-card-actions>
+    </div>
+    <br />
+</div>
+</mat-card>
+   
+<div *ngIf="isUserLogged" class="center">
+    <button mat-raised-button style="background-color:#ade9f4;" routerLink="/pet">Pets</button>
+    <button mat-raised-button style="background-color:#ade9f4;" routerLink="/rx">Prescriptions</button>
+    <button mat-raised-button style="background-color:#ade9f4;" routerLink="/appointment" >Appointments</button>
+    <button mat-raised-button style="background-color:#ade9f4;" routerLink="/contacts">Contacts</button>
+
+</div>
+
+
+<div class="center" *ngIf="isUserLogged" >
+    <router-outlet></router-outlet>
+</div>
+
+
+

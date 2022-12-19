@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* .hero {
+    position: relative;
+    height: 100%;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;;
+} */
+
+.hero::before{
+    background-image: url('assets/paw-1s-1084px.gif') ;
+    background-repeat: repeat;
+    content: "";
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    opacity: 0.4;
+    height:150%;
+}

@@ -1,0 +1,31 @@
+button {
+    margin: 20px 20px 20px 20px;
+    
+ }
+
+ input {
+    width: 100%;
+
+ }
+
+ 
+/*  
+ .columns {
+     display:flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     width: 100%;
+     margin: 0 auto;
+ }
+ .column {
+     flex: 33.33%;
+     margin: 20px;
+ } */
+
+ .column-1 {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}

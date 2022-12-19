@@ -1,0 +1,42 @@
+
+    <div class="columns">
+    <div class="column" style="margin-bottom: 10px" *ngIf="!editMode" >
+        
+        <mat-card>
+            <mat-card-content>
+                <b>{{theContact.contact_name}}</b> <br/>
+                <fa-icon style="color: gray" [icon]="faPhone"></fa-icon>
+                Phone: {{theContact.phone}} <br/>
+                <fa-icon style="color: gray" [icon]="faEnvelope"></fa-icon>
+                Email: {{theContact.email}} <br/>
+                <fa-icon style="color: gray" [icon]="faHouseUser"></fa-icon>
+                Address: {{theContact.address}} <br/>
+            </mat-card-content>
+        <mat-card-actions>
+        <button mat-raised-button style="background-color:#ade9f4;" (click)="turnOnEdit()">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteMe()" >Delete</button>
+        </mat-card-actions>
+    </mat-card>
+    </div>
+</div>
+
+
+
+
+    <div style="margin-bottom: 10px" *ngIf="editMode" >
+    <mat-card>
+        <mat-card-content>
+        Name: <input type="text" [(ngModel)]="editContact.contact_name" > <br/>
+        Phone: <input type="text" [(ngModel)]="editContact.phone" > <br/>
+        Email: <input type="text" [(ngModel)]="editContact.email" > <br/>
+        Address: <input type="text" [(ngModel)]="editContact.address" > <br/>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button style="background-color:#ade9f4;" (click)="saveChanges()" >Save</button>
+            <button mat-raised-button color="warn" (click)="cancel()" >Cancel</button>
+        </mat-card-actions>
+        
+    </mat-card>
+    </div>
+
+

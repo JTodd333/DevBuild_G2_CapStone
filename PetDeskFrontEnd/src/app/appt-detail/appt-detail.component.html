@@ -1,0 +1,21 @@
+<div class="columns">
+<div class="column" *ngIf="editMode" >
+    <mat-card>
+        <mat-card-header>
+    <h4>Appointment Details</h4>
+    </mat-card-header>
+    <mat-card-content>
+    <!-- Appt Id: {{editAppt.id}} <br/>
+    Pet Id:  {{editAppt.pet_id}} <br/> -->
+    <mat-form-field [style.width.px]=300>Provider: <input matInput  type="text" [(ngModel)]="editAppt.provider" > <br/></mat-form-field>
+    <mat-form-field [style.width.px]=300 >Appt Date: <input matInput  type="text" [(ngModel)]="editAppt.appt_date" > <br/></mat-form-field>
+    <mat-form-field [style.width.px]=300 >Appt Notes: <input matInput  type="text" [(ngModel)]="editAppt.appt_notes" > <br/></mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+    <button mat-raised-button style="background-color:#ade9f4;" (click)="saveChanges()">Save Change</button>
+    <button mat-raised-button style="background-color:#ade9f4;" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="deleteMe()">Delete Appt.</button>
+    </mat-card-actions>
+    </mat-card>
+</div>
+</div>

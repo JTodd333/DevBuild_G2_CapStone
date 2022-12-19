@@ -1,0 +1,38 @@
+
+body {
+    height: 100%;
+}
+
+.header-card {
+
+    width: 400px;
+    background-color: rgba(223, 195, 255, 0.587);
+}
+
+.center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:wrap;
+}
+
+button {
+    margin-right: 20px;
+    margin-top:20px;
+    background-color:#ade9f4;
+}
+
+
+.header{
+    background-color:#ade9f4;
+    opacity: 100%; 
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding-top: 25px;
+}
+
+/* .navbutton{
+    background-color:#ade9f4;
+} */

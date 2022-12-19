@@ -1,0 +1,45 @@
+
+<div class="columns">
+    <div class="column" *ngIf="!editMode">
+        <mat-card>
+            <mat-card-content>
+    <h3><u>{{thePet.pet_name}}</u></h3>
+    (Pet Id: {{thePet.id}}) <br/>
+    Species: {{thePet.species}}
+    <ng-container *ngIf="thePet.species == 'Dog' || thePet.species =='dog' || thePet.species =='Canine' || thePet.species =='canine' " >
+        <fa-icon style="color: gray" [icon]="faDog"></fa-icon>
+    </ng-container> 
+    <ng-container *ngIf="thePet.species == 'Cat' || thePet.species =='cat' || thePet.species =='Feline' || thePet.species =='feline' " >
+        <fa-icon style="color: gray" [icon]="faCat"></fa-icon>
+    </ng-container>
+    <br/>
+    Breed: {{thePet.breed}} <br/>
+    Date of Birth: {{thePet.dob}} <br/>
+    Notes: {{thePet.pet_notes}} <br/>
+    </mat-card-content>
+    <mat-card-actions>
+    <button mat-raised-button style="margin-right:20px;margin-top:20px; background-color:#ade9f4; " mat-raised-button (click)="turnOnEdit()">Edit</button>
+    <button mat-raised-button color="warn" style="margin-right:20px;margin-top:20px;" mat-raised-button (click)="deleteMe()" >Delete</button>
+</mat-card-actions>
+            </mat-card>
+    </div>
+</div>
+    
+<div class="columns">
+    <div class="column" style="margin-bottom: 10px" *ngIf="editMode">
+        <mat-card>
+        <mat-card-content>
+        Name: <input matInput type="text" [(ngModel)]="editPet.pet_name" > <br/>
+        Id: {{thePet.id}} <br/>
+        Species: <input matInput type="text" [(ngModel)]="editPet.species" > <br/>
+        Breed: <input matInput type="text" [(ngModel)]="editPet.breed" > <br/>
+        Date of Birth: <input matInput type="text" [(ngModel)]="editPet.dob"> <br/>
+        Notes: <input matInput type="text" [(ngModel)]="editPet.pet_notes"> <br/>
+        </mat-card-content>
+        <mat-card-actions>
+        <button mat-raised-button style="margin-right: 20px;margin-top:20px; background-color:#ade9f4;" mat-raised-button (click)="saveChanges()" >Save</button>
+        <button mat-raised-button style="margin-right: 20px;margin-top:20px;" mat-raised-button color="warn" (click)="cancel()" >Cancel</button>
+        </mat-card-actions>
+        </mat-card>
+        </div>
+    </div>

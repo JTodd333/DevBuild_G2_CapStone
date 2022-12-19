@@ -1,0 +1,87 @@
+<h2>Prescriptions</h2>
+
+<div class="columns">
+    <div class="column-1"  >
+        <button style="margin: 0 auto;" mat-raised-button (click)="showForm()">Add New Rx</button> <br/>
+        </div>
+        </div>
+        <div class="columns">
+        <div class="column" style="margin-top:20px;" >
+        <ng-container *ngIf="addingNewRx" >
+            <mat-card>
+                <mat-card-content>
+            <mat-form-field> Pet Name:
+                <!-- Pet Id: <input matInput type="text" [(ngModel)]="newRx.pet_id" > <br/> -->
+                <mat-select [(value)]="newRx.pet_id" [(ngModel)]="newRx.pet_id" >
+                    <mat-option *ngFor="let pet of PetList" [value]="pet.id"> {{ pet.pet_name}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                Rx Name: <input matInput type="text" [(ngModel)]="newRx.rx_name" > <br/>
+            </mat-form-field>
+            <mat-form-field>
+                Rx Reminder: <input matInput type="text" [(ngModel)]="newRx.rx_reminder" > <br/>
+            </mat-form-field>
+            <mat-form-field>
+                Rx Notes: <input matInput type="text" [(ngModel)]="newRx.rx_notes" > <br/>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button style="background-color:#ade9f4;" (click)="addRx()" >Save</button>
+            <button mat-raised-button color="warn" (click)="cancel()" >Cancel</button>
+        </mat-card-actions>
+        </mat-card>
+        </ng-container></div>
+
+    </div>
+
+    
+    
+    <div class="columns">
+    <div class="column" *ngFor="let rx of PetRxList" >
+        <mat-card>
+            <mat-card-content>
+    <h4><u>{{rx.pet_name}} </u> <fa-icon style="color: gray; margin-left: 7px;" [icon]="faRx"></fa-icon></h4>
+    <!-- (Pet Id: {{rx.pet_id}}) <br/> -->
+    <b>Rx Name:</b> {{rx.rx_name}} <br/>
+    <b>Rx Reminder:</b> {{rx.rx_reminder}} <br/>
+    <b>Rx Notes:</b> {{rx.rx_notes}} <br/>
+    <i>Date of Birth:</i> {{rx.dob}} <br/>
+    <i>Species:</i> {{rx.species}}
+    <ng-container *ngIf="rx.species == 'Dog' || rx.species =='dog'|| rx.species =='Canine' || rx.species =='canine' " >
+        <fa-icon style="color: gray" [icon]="faDog"></fa-icon>
+    </ng-container> 
+    <ng-container *ngIf="rx.species == 'Cat' || rx.species =='cat' || rx.species =='Feline' || rx.species =='feline'  " >
+        <fa-icon style="color: gray" [icon]="faCat"></fa-icon>
+    </ng-container> <br/>
+
+</mat-card-content>
+<mat-card-actions>
+    <!-- <button mat-raised-button for="my-modal-4" (click)="openRx(rx.rx_id)">Open</button> -->
+    <label for="my-modal-4" class="btn btn-sm" style="background-color: #ade9f4; " (click)="openRx(rx.rx_id)">Open</label>
+</mat-card-actions>
+    </mat-card>
+    </div>
+
+    <!-- <div *ngIf="editRx.id > 0" >
+        <app-rx-detail [editRx]="editRx" (updateEdit)="updateRx($event)"
+        (delete)="deleteRx($event)" 
+        (refresh)="refresh()" ></app-rx-detail>
+    </div> -->
+</div>
+
+<!-- The button to open modal -->
+<!-- <label for="my-modal-4" class="btn">open modal</label> -->
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal-4" class="modal-toggle " />
+<div class="modal">  <div class="modal-box w-11/12 max-w-5xl">    
+    <app-rx-detail [editRx]="editRx" (updateEdit)="updateRx($event)"
+    (delete)="deleteRx($event)" 
+    (refresh)="refresh()" ></app-rx-detail>
+    <!-- <div class="modal-action">      
+        <label for="my-modal-4" class="btn">Cancel</label>    
+    </div>-->
+</div></div> 
+
+
+

@@ -1,0 +1,87 @@
+<h2 style="">Appointments</h2>
+<div >
+
+    <div class="columns">
+        <div class="column-1">
+            <button style="margin: 0 auto;" mat-raised-button (click)="showForm()" >Add New Appt.</button> 
+        </div>
+        </div>
+        <div class="columns">
+        <div class="column" style="margin-top:20px;">
+            <ng-container *ngIf="addingNewAppt" >
+            <!-- Pet Name: <input type="text" [(ngModel)]="searchName" > <br/> -->
+            <mat-card>
+                <mat-card-content>
+            <mat-form-field> Pet Name:
+            <!-- Pet Id: <input matInput type="text" [(ngModel)]="newAppt.pet_id" > <br/> -->
+                <mat-select [(value)]="newAppt.pet_id" [(ngModel)]="newAppt.pet_id" >
+                    <mat-option *ngFor="let pet of PetList" [value]="pet.id"> {{ pet.pet_name}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+            Provider: <input matInput type="text" [(ngModel)]="newAppt.provider" > <br/>
+            </mat-form-field>
+            <mat-form-field>
+            Appt. Date/Time: <input matInput type="text" [(ngModel)]="newAppt.appt_date" > <br/>
+            </mat-form-field>
+            <mat-form-field>
+            Appt. Notes: <input matInput type="text" [(ngModel)]="newAppt.appt_notes" > <br/>
+            </mat-form-field>
+             </mat-card-content>
+             <mat-card-actions>
+            <button mat-raised-button style="background-color:#ade9f4;" (click)="addAppt()" >Save</button>
+            <button mat-raised-button color="warn" (click)="cancel()" >Cancel</button>
+            </mat-card-actions>
+        </mat-card>
+        </ng-container></div>
+        
+    </div>
+    <div class="columns">
+    <div class="column" *ngFor="let v of VisitList" >
+        <mat-card>
+            <mat-card-content>
+    <h4><u>{{ v.pet_name }}</u></h4>
+    <!-- <p>(Pet ID: {{ v.pet_id }}) </p><br/> -->
+    <b>Appt Date/Time:</b>      {{ v.appt_date }} <br />
+    <b>Provider: </b>      {{ v.provider }} <br />
+    <b>Appt Notes: </b>    {{ v.appt_notes }} <br />
+    <i>Species:</i>       {{ v.species }} 
+    <ng-container *ngIf="v.species == 'Dog' || v.species =='dog' || v.species =='Canine' || v.species =='canine' " >
+        <fa-icon style="color: gray" [icon]="faDog"></fa-icon>
+    </ng-container> 
+    <ng-container *ngIf="v.species == 'Cat' || v.species =='cat' || v.species =='Feline' || v.species =='feline'  " >
+        <fa-icon style="color: gray" [icon]="faCat"></fa-icon>
+    </ng-container>
+    <br /> 
+    <i>Date of Birth:</i> {{v.dob}} <br/>
+    <i>Pet Notes:</i>     {{v.pet_notes}} <br/>
+</mat-card-content>
+<mat-card-actions>
+    <!-- <button mat-raised-button (click)="openAppt(v.appt_id)">Open</button> -->
+    <label for="my-modal-4" class="btn btn-sm" style="background-color: #ade9f4;; " (click)="openAppt(v.appt_id)">Open</label>
+</mat-card-actions>
+    </mat-card>
+    </div>
+
+    <div *ngIf="editAppt.id > 0" >
+        <app-appt-detail [editAppt]="editAppt" 
+        (updateEdit)="updateOne($event)"
+        (delete)="deleteOne($event)"
+        (refresh)="refresh()"
+        ></app-appt-detail>
+    </div>
+</div>
+
+<input type="checkbox" id="my-modal-4" class="modal-toggle " />
+<div class="modal">  <div class="modal-box w-11/12 max-w-5xl">  
+    <app-appt-detail [editAppt]="editAppt" 
+        (updateEdit)="updateOne($event)"
+        (delete)="deleteOne($event)"
+        (refresh)="refresh()" ></app-appt-detail>
+</div>        
+</div>
+    <!-- <div>
+        Search By Name: <input type="text" [(ngModel)]="searchName" />
+        <button (click)="search()"> Search </button>
+        <button (click)="clear()"> Clear </button>
+    </div>                                    -->
